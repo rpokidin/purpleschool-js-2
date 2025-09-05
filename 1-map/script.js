@@ -3,11 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const users = [
         {id: 1, name: 'Вася'},
         {id: 2, name: 'Петя'},
-        {id: 1, name: 'Вася'},
+        {id: 1, name: 'Вася'}
     ]
 
-    const setUsers = [...new Set(users.map(user => users.find(u => u.id === user.id)))];
+    const uniqueUsers = [...new Set(users.map(user => user.id))].map(id => users.find(user => user.id === id))
 
-    console.log(setUsers);
+    console.log(uniqueUsers)
 
 })
