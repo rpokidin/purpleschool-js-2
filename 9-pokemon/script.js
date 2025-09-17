@@ -1,21 +1,25 @@
+
 const request = new XMLHttpRequest()
 request.open('GET', 'https://pokeapi.co/api/v2/pokemon/ditto')
 request.send()
 
 request.addEventListener('load', function () {
-    const { abilities } = JSON.parse(this.responseText)
-    const abilityUrl = abilities[0].ability.url
-	console.log(abilities)
-	console.log(abilityUrl)
 
-    const abilityRequest = new XMLHttpRequest()
-    abilityRequest.open('GET', abilityUrl)
-    abilityRequest.send()
+	const { abilities } = JSON.parse(this.responseText)
+	const request = new XMLHttpRequest()
 
-    abilityRequest.addEventListener('load', function () {
-        const abilityData = JSON.parse(this.responseText)
-        const description = abilityData.effect_entries[1].effect
-        console.log(abilityData)
-        console.log(description)
-    })
+	request.open('GET', `${abilities[0].ability.url}`)
+	request.send()
+	request.addEventListener('load', function () {
+
+		const { effect_entries } = JSON.parse(this.responseText)
+		const { effect } = effect_entries.find(({ language }) => language.name === 'en');
+            console.log(effect);
+		
+	})
+
+})
+
+request.addEventListener('error', function () {
+	console.log(new Error('Ошибка при получении данных'))
 })
