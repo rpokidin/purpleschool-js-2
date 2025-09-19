@@ -1,28 +1,17 @@
+'use strict';
 
-function race(promises) {
-    if (!Array.isArray(promises) || promises.length === 0) {
-        return Promise.reject(new Error('Empty'))
-    }
-    return new Promise((resolve, reject) => {
-        promises.forEach((promise) => {
-            promise.then((result) => {
-                resolve(result)
-            })
-            .catch((error) => {
-                reject(error)
-            })
-        })
-    })
+async function race(promises) {
+	return new Promise((resolve, reject) => {
+		for (const promise of promises) {
+			promise.then(resolve, reject);
+		}
+	});
 }
 
-const promise1 = new Promise((resolve) => setTimeout(() => resolve('Promise 1 resolved'), 2000))
-const promise2 = new Promise((resolve, reject) => setTimeout(() => reject('Promise 2 rejected'), 1000))
-const promise3 = new Promise((resolve) => setTimeout(() => resolve('Promise 3 resolved'), 1500))
+const promises = [
+	new Promise(resolve => setTimeout(resolve, 1000, 'Promise 1 resolved')),
+	new Promise(resolve => setTimeout(resolve, 500, 'Promise 2 resolved')),
+	new Promise((resolve, reject) => setTimeout(reject, 5000, 'Promise 3 rejected')),
+];
 
-race([promise1, promise2, promise3])
-    .then((result) => {
-        console.log('First promise resolved or rejected:', result)
-    })
-    .catch((error) => {
-        console.error('All promises rejected:', error)
-    })
+race(promises).then(data => console.log(data));
