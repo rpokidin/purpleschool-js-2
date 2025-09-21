@@ -3,7 +3,7 @@ const wrapper = document.querySelector('.wrapper')
 const btns = wrapper.querySelectorAll('[data-counter]')
 const result = document.querySelector('.result')
 const btnTextDefault = 'Нажми меня'
-const btnTextAcive = 'Нажата'
+const btnTextAcive = 'Нажата!'
 let i = 0
 
 const btnsCounter = (event) => {
