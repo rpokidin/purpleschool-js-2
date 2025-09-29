@@ -1,0 +1,30 @@
+{
+  "name": "book-app",
+  "version": "1.0.0",
+  "description": "Cool app",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server",
+    "build": "rollup",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rpokidin/purpleschool-js-2.git"
+  },
+  "keywords": [
+    "books"
+  ],
+  "author": "Roman Pokidin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rpokidin/purpleschool-js-2/issues"
+  },
+  "homepage": "https://github.com/rpokidin/purpleschool-js-2#readme",
+  "dependencies": {
+    "live-server": "^1.2.0"
+  },
+  "devDependencies": {
+    "rollup": "^4.52.3"
+  }
+}
