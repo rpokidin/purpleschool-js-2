@@ -4,8 +4,8 @@
   "description": "Cool app",
   "main": "index.js",
   "scripts": {
-    "npm start": "live-server",
-    "npm run build": "rollup",
+    "start": "live-server",
+    "build": "rollup",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
